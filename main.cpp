@@ -1,12 +1,15 @@
+// Normal Libraries
 #include <iostream>
+ //////////////////////////////////////
+// Created Libraries
 #include "libs/String.cpp"
 
+#include "libs/File.cpp"
+
+using namespace std;
+
 int main() {
-	std::string input = "func ((it Works!chuck));";
-
-	
-
-  std::cout << input << "\n";
-	std::string output = input;
-	std::cout << output << "\n";
+  string input = "import";
+  cout << input << "\n";
+  cout << getTemplate(0) << "\n";
 }

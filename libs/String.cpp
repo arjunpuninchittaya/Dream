@@ -1,7 +1,5 @@
 #include <iostream>
-
 #include <string>
-
 #include <algorithm>
 
 using namespace std;
@@ -76,4 +74,14 @@ int count(string s, char ch) {
 
 int depth(string i) {
   return (count(i, '(') + count(i, ')')) / 2;
+}
+
+static std::string removeSpaces(std::string str) {
+	str.erase(remove(str.begin(), str.end(), ' '), str.end());
+	return str;
+}
+
+string format(string input) {
+	int fpp = input.find_first_of('(');
+	return removeSpaces(input.substr(0, fpp));
 }

@@ -10,7 +10,7 @@ using namespace std;
 using namespace nlohmann;
 
 json templates = {
-	{"import", "import "},
+	{"import", ""},
 };
 
 string templateNames [] = {"import"};

@@ -13,6 +13,10 @@ json templates = {
 	{"import", ""},
 };
 
+json crossLang = {
+	{"import", "#include <placeholder>"}
+};
+
 string templateNames [] = {"import"};
 
 string readLine(int e) {
@@ -35,4 +39,8 @@ string readLine(int e) {
 
 string getTemplate(int i) {
 	return 	templates[templateNames[i]];
+}
+
+string findCor(string input) {
+	return crossLang[input];
 }

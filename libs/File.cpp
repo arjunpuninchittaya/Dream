@@ -6,18 +6,16 @@
 
 #include "json.hpp"
 
+#include "String.cpp"
+
 using namespace std;
 using namespace nlohmann;
 
-json templates = {
-	{"import", ""},
-};
-
 json crossLang = {
-	{"import", "#include <placeholder>"}
+	{"import", "#include <placeholder>"},
+	{"println", "std::cout << placeholder << std::endl;"},
+	{"print", "std::cout << placeholder;"},
 };
-
-string templateNames [] = {"import"};
 
 string readLine(int e) {
   fstream inputFile;
@@ -27,7 +25,7 @@ string readLine(int e) {
   if (inputFile.is_open()) {
     string tp;
     while (getline(inputFile, tp)) {
-      if (currentLine == e) {
+      if (currentLine == e && tp != removeSpaces(tp)) {
         output = tp;
       }
       currentLine++;
@@ -37,10 +35,20 @@ string readLine(int e) {
   return output;
 }
 
-string getTemplate(int i) {
-	return 	templates[templateNames[i]];
-}
-
 string findCor(string input) {
 	return crossLang[input];
+}
+
+int lines() {
+	fstream inputFile;
+  inputFile.open("test/test.drm", ios_base:: in );
+  int currentLine = 0;
+  if (inputFile.is_open()) {
+    string tp;
+    while (getline(inputFile, tp)) {
+      currentLine++;
+    }
+    inputFile.close();
+  }
+	return currentLine;
 }

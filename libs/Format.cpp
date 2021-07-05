@@ -1,19 +1,22 @@
 #include <string>
 #include <iostream>
-#include "String.cpp"
 #include "File.cpp"
 
 using namespace std;
 
-string change(int o) {
+string changeLine(int o) {
 	string i = readLine(o);
-	cout << i << endl;
-	string e = format(i);
-	cout << e << endl;
-	string q = findCor(e);
-	cout << q << endl;
+	string f = format(i);
 	string p = go(i);
-	cout << p << endl;
+	string q = findCor(f);
 	string w = makeCor(q, p);
-	cout << w << endl;
+	return w;
+}
+
+string changeAll() {
+	string returnValue = "";
+	for (int i = 0; i < lines(); i++) {
+		returnValue+=(changeLine(i) + "\n");
+	}
+	return returnValue;
 }

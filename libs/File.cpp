@@ -6,15 +6,19 @@
 
 #include "json.hpp"
 
-#include "String.cpp"
-
 using namespace std;
 using namespace nlohmann;
 
 json crossLang = {
+	{"", "placeholder"},
 	{"import", "#include <placeholder>"},
 	{"println", "std::cout << placeholder << std::endl;"},
 	{"print", "std::cout << placeholder;"},
+	{"}", "}"},
+	{"func", "int placeholder(2placeholder) {"},
+	{"for", "for (placeholder) {"},
+	{"while", "while (placeholder) {"},
+	{"run", "placeholder);"}
 };
 
 string readLine(int e) {
@@ -25,7 +29,7 @@ string readLine(int e) {
   if (inputFile.is_open()) {
     string tp;
     while (getline(inputFile, tp)) {
-      if (currentLine == e && tp != removeSpaces(tp)) {
+      if (currentLine == e) {
         output = tp;
       }
       currentLine++;
@@ -36,7 +40,11 @@ string readLine(int e) {
 }
 
 string findCor(string input) {
-	return crossLang[input];
+	if (crossLang.contains(input)) {
+		return crossLang[input];
+	} else {
+		return input;
+	}
 }
 
 int lines() {
@@ -51,4 +59,10 @@ int lines() {
     inputFile.close();
   }
 	return currentLine;
+}
+
+void writeToCompiled(string input) {
+	fstream file;
+	file.open("Compiled.cpp", ios::out);
+	file << input;
 }

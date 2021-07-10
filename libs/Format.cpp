@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include "String.cpp"
 #include "File.cpp"
 
 using namespace std;
@@ -8,8 +9,9 @@ string changeLine(int o) {
 	string i = readLine(o);
 	string f = format(i);
 	string p = go(i);
-	string q = findCor(f);
-	string w = makeCor(q, p);
+	string e = go2(i);
+	string q = findCor(removeRealSpaces(f));
+	string w = makeCor(q, p, i, e);
 	return w;
 }
 
@@ -19,4 +21,8 @@ string changeAll() {
 		returnValue+=(changeLine(i) + "\n");
 	}
 	return returnValue;
+}
+
+void writeToFile(string input) {
+	writeToCompiled(input);
 }

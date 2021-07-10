@@ -11,6 +11,9 @@ string changeLine(int o) {
 	string p = go(i);
 	string e = go2(i);
 	string q = findCor(removeRealSpaces(f));
+	if (p == e) {
+		e = "";
+	}
 	string w = makeCor(q, p, i, e);
 	return w;
 }
